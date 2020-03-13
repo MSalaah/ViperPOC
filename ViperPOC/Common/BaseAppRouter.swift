@@ -34,9 +34,7 @@ public class BaseAppRouter: IAppRouter {
         switch presentType {
         case .root:
             appDelegate?.window??.rootViewController = UINavigationController(rootViewController: view)
-            navigationController = appDelegate?.window??.rootViewController as? UINavigationController
-            navigationController?.pushViewController(view, animated: animatedDisplay)
-            
+            navigationController = appDelegate?.window??.rootViewController as? UINavigationController            
         case .push:
             navigationController?.pushViewController(view, animated: animatedDisplay)
         case .present:
