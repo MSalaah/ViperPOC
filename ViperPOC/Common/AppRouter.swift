@@ -33,12 +33,9 @@ public class AppRouter: BaseAppRouter {
     public static let shared = AppRouter.createAppRouter()
     
     public static var assembler = Assembler()
-    
- 
 
     private static func createAppRouter() -> AppRouter {
 
-            
         assembler.apply(assemblies:[
                      CommonAssembly(),
                      LoginAssembly()

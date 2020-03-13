@@ -15,7 +15,8 @@ public class BaseAppRouter: IAppRouter {
     
     public func presentModule<T>(_ view: T.Type, _ presentType: PresentType, _ animated: Bool, _ parameters: [String : Any]) where T : UIViewController {
         guard let vc = resolver.resolve(view,arguments: self as IAppRouter,parameters) else {return}
-        present(view: vc, animatedDisplay: true, animatedDismiss: true, presentType: .root)
+//        present(view: vc, animatedDisplay: true, animatedDismiss: true, presentType: .root)
+        presentModule(parameters: parameters, presentType: presentType)
     }
     
     private var assembler: Assembler!
@@ -30,11 +31,16 @@ public class BaseAppRouter: IAppRouter {
         return assembler.resolver
     }
     
+    public func presentModule(parameters: [String: Any], presentType: PresentType) {
+        let wireframe = self.resolver.resolve(ILoginWireframe.self, argument: self as IAppRouter)
+        wireframe!.presentView(parameters: parameters, presentType: presentType)
+       }
+    
     public func present(view: UIViewController, animatedDisplay: Bool, animatedDismiss: Bool, presentType: PresentType) {
         switch presentType {
         case .root:
             appDelegate?.window??.rootViewController = UINavigationController(rootViewController: view)
-            navigationController = appDelegate?.window??.rootViewController as? UINavigationController            
+            navigationController = appDelegate?.window??.rootViewController as? UINavigationController
         case .push:
             navigationController?.pushViewController(view, animated: animatedDisplay)
         case .present:
