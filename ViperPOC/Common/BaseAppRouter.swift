@@ -13,14 +13,6 @@ import Swinject
 
 public class BaseAppRouter: IAppRouter {
     
-    public func presentModule<T>(_ view: T.Type, _ presentType: PresentType, _ animated: Bool, _ parameters: [String : Any]) where T : UIViewController {
-        guard let vc = resolver.resolve(view,arguments: self as IAppRouter,parameters) else {return}
-//        present(view: vc, animatedDisplay: true, animatedDismiss: true, presentType: .root)
-        let params: [String: Any] = ["id": 12345, "name": "Rahul Katariya"]
-
-        presentModule(parameters: params, presentType: presentType)
-    }
-    
     private var assembler: Assembler!
     let appDelegate = UIApplication.shared.delegate
     private var navigationController: UINavigationController?
@@ -33,10 +25,10 @@ public class BaseAppRouter: IAppRouter {
         return assembler.resolver
     }
     
-    public func presentModule(parameters: [String: Any], presentType: PresentType) {
-        let wireframe = self.resolver.resolve(ILoginWireframe.self, argument: self as IAppRouter)
-        wireframe!.presentView(parameters: parameters, presentType: presentType)
-       }
+    public func presentModule<T>(_ serviceType: T.Type, _ presentType: PresentType, _ animated: Bool, _ parameters: [String : Any]) {
+          let wireframe = self.resolver.resolve(T.self, argument: self as IAppRouter) as! IBaseWireframe
+          wireframe.presentView(parameters: parameters, presentType: presentType)
+      }
     
     public func present(view: UIViewController, animatedDisplay: Bool, animatedDismiss: Bool, presentType: PresentType) {
         switch presentType {

@@ -24,7 +24,10 @@ class LoginViewController:BaseViewController<ILoginPresenter>,ILoginViewControll
     func showNoContentScreen() {
         print("No Content")
     }
-
+    @IBAction func click(_ sender: Any) {
+        presenter.handleShowHome()
+    }
+    
     override func viewDidLoad() {
         print(presenter.parameters)
 //        self.presenter.parameters = nil

@@ -10,13 +10,17 @@ import Foundation
 
 
 public protocol ILoginPresenter : IBasePresenter {
-    
+    func handleShowHome()
 }
 
 class LoginPresenter:BasePresenter<LoginViewController, LoginInteractor, LoginWireFrame>,ILoginPresenter {
     
-    
     override init(_ view: LoginViewController, _ interactor: LoginInteractor, _ wireframe: LoginWireFrame) {
         super.init(view, interactor, wireframe)
+    }
+    
+    
+    func handleShowHome() {
+        wireframe.navigateToHome()
     }
 }

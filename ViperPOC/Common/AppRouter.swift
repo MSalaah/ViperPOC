@@ -24,8 +24,7 @@ public protocol IAppRouter {
     func dismiss()
     
     
-    func presentModule<T:UIViewController>(_ view: T.Type,_ presentType: PresentType,_ animated :Bool, _ parameters:[String:Any] )
-
+    func presentModule<T>(_ serviceType: T.Type, _ presentType: PresentType, _ animated: Bool, _ parameters: [String : Any])
 }
 
 public class AppRouter: BaseAppRouter {

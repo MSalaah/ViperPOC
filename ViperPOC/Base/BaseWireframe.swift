@@ -25,5 +25,4 @@ class BaseWireframe :IBaseWireframe {
         let view = router.resolver.resolve(LoginViewController.self, arguments: router, parameters)!
            router.present(view: view, animatedDisplay: true, animatedDismiss: true, presentType: presentType)
        }
-
 }
