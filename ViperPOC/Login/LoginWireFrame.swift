@@ -16,13 +16,8 @@ public protocol ILoginWireframe: IBaseWireframe {
 class LoginWireFrame:BaseWireframe,ILoginWireframe {
     
     
-    override func presentView(parameters: [String : Any], presentType: PresentType) {
-        let view = router.resolver.resolve(LoginViewController.self, arguments: router, parameters)!
-        router.present(view: view, animatedDisplay: true, animatedDismiss: true, presentType: presentType)
-    }
-    
     
     func navigateToHome() {
-        AppRouter.shared.presentModule(ILoginWireframe.self, .push, true, [:])
+        AppRouter.shared.presentModule(LoginViewController.self,ILoginWireframe.self, .push, true, [:])
     }
 }

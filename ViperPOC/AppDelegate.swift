@@ -16,7 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
        
         // Override point for customization after application launch.
-        AppRouter.shared.presentModule(ILoginWireframe.self, .root, true, [:])
+        AppRouter.shared.presentModule(LoginViewController.self,ILoginWireframe.self, .root, true, [:])
         
         return true
     }

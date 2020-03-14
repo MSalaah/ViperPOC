@@ -23,8 +23,8 @@ public protocol IAppRouter {
     func popViewController(animated: Bool)
     func dismiss()
     
-    
-    func presentModule<T>(_ serviceType: T.Type, _ presentType: PresentType, _ animated: Bool, _ parameters: [String : Any])
+    // Generic function to present module
+    func presentModule<T, V:UIViewController>(_ viewController: V.Type ,_ wireframe: T.Type, _ presentType: PresentType, _ animated: Bool, _ parameters: [String : Any])
 }
 
 public class AppRouter: BaseAppRouter {

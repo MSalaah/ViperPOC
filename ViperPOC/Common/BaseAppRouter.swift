@@ -12,7 +12,7 @@ import Foundation
 import Swinject
 
 public class BaseAppRouter: IAppRouter {
-    
+   
     private var assembler: Assembler!
     let appDelegate = UIApplication.shared.delegate
     private var navigationController: UINavigationController?
@@ -25,10 +25,12 @@ public class BaseAppRouter: IAppRouter {
         return assembler.resolver
     }
     
-    public func presentModule<T>(_ serviceType: T.Type, _ presentType: PresentType, _ animated: Bool, _ parameters: [String : Any]) {
-          let wireframe = self.resolver.resolve(T.self, argument: self as IAppRouter) as! IBaseWireframe
-          wireframe.presentView(parameters: parameters, presentType: presentType)
-      }
+    
+    public func presentModule<T, V>(_ viewController: V.Type, _ wireframe: T.Type, _ presentType: PresentType, _ animated: Bool, _ parameters: [String : Any]) where V : UIViewController {
+           let wireframe = self.resolver.resolve(T.self, argument: self as IAppRouter) as! IBaseWireframe
+            wireframe.presentView(viewController, parameters: parameters, presentType: presentType)
+       }
+   
     
     public func present(view: UIViewController, animatedDisplay: Bool, animatedDismiss: Bool, presentType: PresentType) {
         switch presentType {

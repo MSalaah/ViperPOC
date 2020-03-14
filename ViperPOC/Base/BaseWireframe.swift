@@ -10,7 +10,8 @@ import Foundation
 import UIKit
 
 public protocol IBaseWireframe: class {
-    func presentView(parameters: [String: Any], presentType: PresentType)
+    
+    func presentView<V:UIViewController>(_ viewController: V.Type,parameters: [String: Any], presentType: PresentType)
 }
 
 class BaseWireframe :IBaseWireframe {
@@ -21,8 +22,8 @@ class BaseWireframe :IBaseWireframe {
            self.router = router
        }
     
-    func presentView(parameters: [String : Any], presentType: PresentType) {
-        let view = router.resolver.resolve(LoginViewController.self, arguments: router, parameters)!
+    func presentView<V>(_ viewController: V.Type, parameters: [String : Any], presentType: PresentType) where V : UIViewController {
+           let view = router.resolver.resolve(viewController, arguments: router, parameters)!
            router.present(view: view, animatedDisplay: true, animatedDismiss: true, presentType: presentType)
        }
 }

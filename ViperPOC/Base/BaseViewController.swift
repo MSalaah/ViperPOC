@@ -22,6 +22,8 @@ class BaseViewController<P>:UIViewController,IBaseViewController  {
     
     override public func viewDidLoad() {
         super.viewDidLoad()
+        print("Super Called")
+
         // Do someting here...
     }
     

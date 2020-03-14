@@ -25,10 +25,13 @@ class LoginViewController:BaseViewController<ILoginPresenter>,ILoginViewControll
         print("No Content")
     }
     @IBAction func click(_ sender: Any) {
+        showLoading()
         presenter.handleShowHome()
+        hideLoading()
     }
     
     override func viewDidLoad() {
+        super.viewDidLoad()
         print(presenter.parameters)
 //        self.presenter.parameters = nil
     }
