@@ -10,14 +10,12 @@ import Foundation
 import UIKit
 
 public protocol ILoginWireframe: IBaseWireframe {
-   func navigateToHome()
+   func navigateToHome(parameters: [String : Any])
 }
 
 class LoginWireFrame:BaseWireframe,ILoginWireframe {
     
-    
-    
-    func navigateToHome() {
-        AppRouter.shared.presentModule(LoginViewController.self,ILoginWireframe.self, .push, true, [:])
+    func navigateToHome(parameters: [String : Any]) {
+        AppRouter.shared.presentModule(LoginViewController.self,ILoginWireframe.self, .push, true, parameters)
     }
 }

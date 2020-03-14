@@ -16,7 +16,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
        
         // Override point for customization after application launch.
-        AppRouter.shared.presentModule(LoginViewController.self,ILoginWireframe.self, .root, true, [:])
+        let actual: [String: Any] = ["id": 12345, "name": "Rahul Katariya"]
+        AppRouter.shared.presentModule(LoginViewController.self,ILoginWireframe.self, .root, true, actual)
         
         return true
     }

@@ -21,6 +21,7 @@ class LoginPresenter:BasePresenter<LoginViewController, LoginInteractor, LoginWi
     
     
     func handleShowHome() {
-        wireframe.navigateToHome()
+        let actual: [String: Any] = ["id": 1, "name": "Mohamed Salah"]
+        wireframe.navigateToHome(parameters: actual)
     }
 }
