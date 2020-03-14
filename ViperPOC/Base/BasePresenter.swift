@@ -9,10 +9,12 @@
 import Foundation
 
 public protocol IBasePresenter: class {
-    
+    var parameters: [String: Any]? { get set }
 }
 
-class BasePresenter<V:IBaseViewController, I:IBaseInteractor, W:IBaseWireframe> {
+class BasePresenter<V:IBaseViewController, I:IBaseInteractor, W:IBaseWireframe>:IBasePresenter{
+    var parameters: [String : Any]?
+    
     
     // Reference to the View (weak to avoid retain cycle).
     weak var view: V!

@@ -31,6 +31,5 @@ class BaseViewController<P>:UIViewController,IBaseViewController  {
     
     func hideLoading() {
         print("Hide Loading")
-
     }
 }

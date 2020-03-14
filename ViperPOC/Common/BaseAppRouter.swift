@@ -16,7 +16,9 @@ public class BaseAppRouter: IAppRouter {
     public func presentModule<T>(_ view: T.Type, _ presentType: PresentType, _ animated: Bool, _ parameters: [String : Any]) where T : UIViewController {
         guard let vc = resolver.resolve(view,arguments: self as IAppRouter,parameters) else {return}
 //        present(view: vc, animatedDisplay: true, animatedDismiss: true, presentType: .root)
-        presentModule(parameters: parameters, presentType: presentType)
+        let params: [String: Any] = ["id": 12345, "name": "Rahul Katariya"]
+
+        presentModule(parameters: params, presentType: presentType)
     }
     
     private var assembler: Assembler!

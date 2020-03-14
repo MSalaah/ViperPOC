@@ -26,6 +26,7 @@ class LoginViewController:BaseViewController<ILoginPresenter>,ILoginViewControll
     }
 
     override func viewDidLoad() {
+        print(presenter.parameters)
 //        self.presenter.parameters = nil
     }
 }
